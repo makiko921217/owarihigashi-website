@@ -29,8 +29,8 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl">
           <h2 className="text-3xl font-bold text-foreground mb-8">直近の行事予定</h2>
           <div className="relative overflow-hidden" style={{ paddingBottom: "75%", height: 0 }}>
-            {/*<iframe
-              src="brbr（GoogleカレンダーのURL入れる）"
+            <iframe
+              src="https://calendar.google.com/calendar/embed?src=ba593ebf0cfa60391b78106323084ce881c51befa0c2880f8d6a181a0e00afe2%40group.calendar.google.com&ctz=Asia%2FTokyo"
               style={{
                 border: 0,
                 position: "absolute",
@@ -41,7 +41,7 @@ export default function HomePage() {
               }}
               frameBorder="0"
               scrolling="no"
-            ></iframe>*/}
+            ></iframe>
           </div>
           <ul className="mt-8 space-y-4">
             <li className="text-muted-foreground">イベント名: サンプルイベント1 / 参加要件: なし / 料金: 無料</li>
