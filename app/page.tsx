@@ -44,9 +44,10 @@ export default function HomePage() {
             ></iframe>
           </div>
           <ul className="mt-8 space-y-4">
-            <li className="text-muted-foreground">イベント名: サンプルイベント1 / 参加要件: なし / 料金: 無料</li>
-            <li className="text-muted-foreground">イベント名: サンプルイベント2 / 参加要件: 初心者歓迎 / 料金: 500円</li>
-            <li className="text-muted-foreground">イベント名: サンプルイベント3 / 参加要件: 経験者のみ / 料金: 1000円</li>
+            <li className="text-muted-foreground">イベント名: 日進大会 / 参加要件: 尾張東の小中学生 / 料金:1,000円</li>
+            <li className="text-muted-foreground">イベント名: 尾張東審判講習会：参加費:1000
+              円</li>
+            <li className="text-muted-foreground">イベント名: 尾張東剣道大会: 小中高校生：参加費1000円</li>
           </ul>
         </div>
       </section>
