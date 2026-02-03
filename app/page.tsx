@@ -44,9 +44,9 @@ export default function HomePage() {
             ></iframe>
           </div>
           <ul className="mt-8 space-y-4">
-            <li className="text-muted-foreground">イベント名: 東郷大会 / 参加要件: 尾張東と豊明の小中学生 / 料金:1500円</li>
-            <li className="text-muted-foreground">イベント名: 長久手大会 /参加要件：尾張東と瀬戸の小中学生　/参加費:1800円</li>
-            <li className="text-muted-foreground">イベント名: 尾張東剣道大会　/ 参加要件： 小中高校生 / 参加費:2000円</li>
+            <li className="text-muted-foreground">イベント名: 冬期級位審査会（日進） / 東郷町総合体育館</li>
+            <li className="text-muted-foreground">イベント名: 合同稽古 / 日進市スポーツセンター / </li>
+            <li className="text-muted-foreground">イベント名: 木刀による剣道基本技講習会/ 日進市スポーツセンター</li>
           </ul>
         </div>
       </section>
@@ -61,7 +61,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Dojo Introduction Section */}
+      {/* Dojo Introduction Section */
+      }
       <section id="dojo-introduction-section" className="dojo-introduction-section py-16 px-4 bg-background">
         <div className="mx-auto max-w-7xl text-center">
           <h2 className="text-3xl font-bold text-foreground mb-4">道場紹介</h2>
