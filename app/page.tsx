@@ -44,9 +44,10 @@ export default function HomePage() {
             ></iframe>
           </div>
           <ul className="mt-8 space-y-4">
+            <li className="text-muted-foreground">イベント名: 木刀による剣道基本技講習会 / 日進市スポーツセンター</li>
             <li className="text-muted-foreground">イベント名: 冬期級位審査会（日進） / 東郷町総合体育館</li>
-            <li className="text-muted-foreground">イベント名: 合同稽古 / 日進市スポーツセンター / </li>
-            <li className="text-muted-foreground">イベント名: 木刀による剣道基本技講習会/ 日進市スポーツセンター</li>
+            <li className="text-muted-foreground">イベント名: 合同稽古 / 日進市スポーツセンター </li>
+            <li className="text-muted-foreground">イベント名:日進市剣道大会 / 日進市スポーツセンター </li>
           </ul>
         </div>
       </section>
