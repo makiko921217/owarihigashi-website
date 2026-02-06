@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowRight, Calendar, MapPin, Users } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -14,6 +15,15 @@ export default function HomePage() {
       <section id="hero-section" className="hero-section relative bg-gradient-to-b from-muted/50 to-background py-24 px-4">
         <div className="mx-auto max-w-7xl text-center">
           <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-6xl mb-6">尾張東剣道連盟の紹介</h1>
+          <div className="mx-auto mb-6 flex justify-center max-w-2xl">
+            <Image
+              src="/flag.png"
+              alt="Owari East Kendo Federation Flag"
+              width={672}
+              height={672}
+              style={{ width: '100%', height: 'auto' }}
+            />
+          </div>
           <p className="mx-auto max-w-2xl text-lg leading-8 text-muted-foreground mb-8 text-left">
             尾張東剣道連盟は、長久手市、日進市及び東郷町内の剣道団体に所属、若しくは在学する者で、剣道(居合道を含む)の愛好者をもって組織され、平成19年4月1日に発足しました。
             目的は、心身の錬磨と会員相互の親睦を図り、一致団結して剣道の普及と発展に寄与する事を目的としています。
