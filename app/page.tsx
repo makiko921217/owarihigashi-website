@@ -71,6 +71,7 @@ export default function HomePage() {
           <h2 className="text-3xl font-bold text-foreground mb-4">昇段審査について</h2>
           <p className="text-lg text-muted-foreground mb-8">
             昇段審査の詳細情報をここに記載します。
+            
           </p>
         </div>
       </section>

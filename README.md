@@ -8,3 +8,4 @@
 7. PS C:hogehoge/owarihigashi-website>  の後に　`git commit -m "直したところメモ"`
 8. PS C:hogehoge/owarihigashi-website>  の後に　`git push`  これで公開完了
 9. `https://owarihigashi-website-xi.vercel.app/`　を確認する
+
