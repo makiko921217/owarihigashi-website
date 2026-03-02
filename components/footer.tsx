@@ -50,14 +50,14 @@ export function Footer() {
           <div>
             <h3 className="font-semibold mb-4">お問い合わせ</h3>
             <p className="text-sm text-gray-300 mb-2">
-              お問い合わせは以下の電話番号までご連絡ください。
+              お問い合わせは以下のメールアドレスまでご連絡ください。
             </p>
-            <p className="text-lg font-bold text-gray-100">XXX-XXX-XXXX</p>
+            <p className="text-lg font-bold text-gray-100">owarihigasiken@gmail.com</p>
           </div>
         </div>
 
         <div className="mt-8 pt-8 border-t border-gray-800">
-          <p className="text-center text-sm text-gray-400">© 2025 尾張東剣道連盟. All rights reserved.</p>
+          <p className="text-center text-sm text-gray-400">2026 尾張東剣道連盟. All rights reserved.</p>
         </div>
       </div>
     </footer>
