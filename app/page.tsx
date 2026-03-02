@@ -29,7 +29,7 @@ export default function HomePage() {
             目的は、心身の錬磨と会員相互の親睦を図り、一致団結して剣道の普及と発展に寄与する事を目的としています。
             標語は「交剣知愛」とし、尾張東地区内(長久手市、日進市、東郷町)の青少年、学生、一般社会人の剣道愛好者が、練習会、剣道大会等でお互いが剣を交えることにより、心身の練磨と、親交を深め、思いやりの精神をもって自他共に認め合う、仲の良い人間関係を築くことです。
             剣道の理念は、「剣の理法の修錬による、人間形成の道である」と教えています。私たちは、この理念の基に修錬に励み、日本の伝統文化である剣道を守って行きたいと思っています。
-            尾張東剣道連盟<br></br>理事長　廣國　憲治
+            <br></br>尾張東剣道連盟理事長　廣國　憲治
           </p>
         </div>
       </section>
@@ -54,17 +54,20 @@ export default function HomePage() {
             ></iframe>
           </div>
           <ul className="mt-8 space-y-4">{/* ここにイベント名を入れる */}
-            <li className="text-muted-foreground"> 2/15 木刀による剣道基本技講習会 / 日進市スポーツセンター / 1級から3級を受審予定の者</li>
-            <li className="text-muted-foreground"> 2/22  冬期級位審査会（日進） / 東郷町総合体育館</li>
-            <li className="text-muted-foreground"> 2/23 合同稽古 / 日進市スポーツセンター /</li>
-            <li className="text-muted-foreground"> 3/8 日進市剣道大会 / 日進市スポーツセンター </li>
+            <li className="text-muted-foreground">  3/8 日進市剣道大会 / 日進市スポーツセンター </li>
+            <li className="text-muted-foreground">  3/15 木刀基本技講習会 / 日進市スポーツセンター</li>
+            <li className="text-muted-foreground">  3/22 椿会稽古 / 東郷町総合体育館</li>
+            <li className="text-muted-foreground">  3/29 合同稽古 / 日進市スポーツセンター</li> 
+            
+            
+                
           </ul>
         </div>
       </section>
 
       {/* Examination Info Section */}
-      <section id="examination-info-section" className="examination-info-section py-16 px-4">
-        <div className="mx-auto max-w-7xl text-center">
+      <section id="examination-info-section" className="examination-info-section py-16 px-4">  
+          <div className="mx-auto max-w-7xl text-center">
           <h2 className="text-3xl font-bold text-foreground mb-4">昇段審査について</h2>
           <p className="text-lg text-muted-foreground mb-8">
             昇段審査の詳細情報をここに記載します。
