@@ -54,11 +54,11 @@ export default function HomePage() {
             ></iframe>
           </div>
           <ul className="mt-8 space-y-4">{/* ここにイベント名を入れる */}
-            <li className="text-muted-foreground">  3/8 日進市剣道大会 / 日進市スポーツセンター </li>
-            <li className="text-muted-foreground">  3/15 木刀基本技講習会 / 日進市スポーツセンター</li>
-            <li className="text-muted-foreground">  3/22 椿会稽古 / 東郷町総合体育館</li>
-            <li className="text-muted-foreground">  3/29 合同稽古 / 日進市スポーツセンター</li> 
-            
+            <li className="text-muted-foreground">  4/4 尾張形講習審査会 / 瀬戸市体育館 </li>
+            <li className="text-muted-foreground">  4/5 三地区級位審査会 / 瀬戸市体育館 </li>
+            <li className="text-muted-foreground">  4/11 尾張実技審査会 / 瀬戸市体育館 </li>
+            <li className="text-muted-foreground">  4/26 尾張東合同稽古会 / 日進市スポーツセンター </li> 
+            <li className="text-muted-foreground">  4/26 剣道四・五段審査会 / 天白スポーツセンター </li> 
             
                 
           </ul>
@@ -70,9 +70,24 @@ export default function HomePage() {
           <div className="mx-auto max-w-7xl text-center">
           <h2 className="text-3xl font-bold text-foreground mb-4">昇段審査について</h2>
           <p className="text-lg text-muted-foreground mb-8">
-            昇段審査の詳細情報をここに記載します。
-            
+            昇段審査の詳細情報をここに記載します。  
           </p>
+          
+        {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <a href="https://nissinkenyukai.wixsite.com/kendo" className="block p-6 rounded-lg border border-border hover:bg-muted/50 hover:border-primary transition-colors">
+              <h3 className="font-semibold text-foreground text-lg">日進剣友会</h3>
+            </a>
+            <a href="https://aisyouken.coresv.net/" className="block p-6 rounded-lg border border-border hover:bg-muted/50 hover:border-primary transition-colors">
+              <h3 className="font-semibold text-foreground text-lg">愛知少年剣友会</h3>
+            </a>
+            <a href="https://rikuzenkai2006.weebly.com/" className="block p-6 rounded-lg border border-border hover:bg-muted/50 hover:border-primary transition-colors">
+              <h3 className="font-semibold text-foreground text-lg">六然会</h3>
+            </a>
+            <a href="https://www.nagakute-sport.com/%E5%89%A3%E9%81%93%E9%83%A8-%E9%95%B7%E4%B9%85%E6%89%8B%E5%B8%82%E5%89%A3%E9%81%93%E6%95%99%E5%AE%A4" className="block p-6 rounded-lg border border-border hover:bg-muted/50 hover:border-primary transition-colors">
+              <h3 className="font-semibold text-foreground text-lg">長久手市剣道教室</h3>
+            </a>
+         </div>*/}
+
         </div>
       </section>
 
@@ -86,7 +101,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             <a href="https://nissinkenyukai.wixsite.com/kendo" className="block p-6 rounded-lg border border-border hover:bg-muted/50 hover:border-primary transition-colors">
               <h3 className="font-semibold text-foreground text-lg">日進剣友会</h3>
             </a>
