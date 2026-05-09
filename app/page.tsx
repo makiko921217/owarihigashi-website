@@ -29,7 +29,6 @@ export default function HomePage() {
             目的は、心身の錬磨と会員相互の親睦を図り、一致団結して剣道の普及と発展に寄与する事を目的としています。
             標語は「交剣知愛」とし、尾張東地区内(長久手市、日進市、東郷町)の青少年、学生、一般社会人の剣道愛好者が、練習会、剣道大会等でお互いが剣を交えることにより、心身の練磨と、親交を深め、思いやりの精神をもって自他共に認め合う、仲の良い人間関係を築くことです。
             剣道の理念は、「剣の理法の修錬による、人間形成の道である」と教えています。私たちは、この理念の基に修錬に励み、日本の伝統文化である剣道を守って行きたいと思っています。
-            <br></br>尾張東剣道連盟理事長　廣國　憲治
           </p>
         </div>
       </section>
@@ -54,11 +53,10 @@ export default function HomePage() {
             ></iframe>
           </div>
           <ul className="mt-8 space-y-4">{/* ここにイベント名を入れる */}
-            <li className="text-muted-foreground">  4/4 尾張形講習審査会 / 瀬戸市体育館 </li>
-            <li className="text-muted-foreground">  4/5 三地区級位審査会 / 瀬戸市体育館 </li>
-            <li className="text-muted-foreground">  4/11 尾張実技審査会 / 瀬戸市体育館 </li>
-            <li className="text-muted-foreground">  4/26 尾張東合同稽古会 / 日進市スポーツセンター </li> 
-            <li className="text-muted-foreground">  4/26 剣道四・五段審査会 / 天白スポーツセンター </li> 
+            <li className="text-muted-foreground">  5/10 三地区稽古会 / 瀬戸武道館 </li>
+            <li className="text-muted-foreground">  5/24 木刀基本技及び日本剣道形講習会 / 東郷町総合体育館 </li>
+            <li className="text-muted-foreground">  5/31 尾張東合同稽古会 / 日進市スポーツセンター </li> 
+            <li className="text-muted-foreground">  6/7 かきつばた杯争奪女子剣道大会 / スギ薬局知立福祉アリーナ </li> 
             
                 
           </ul>
