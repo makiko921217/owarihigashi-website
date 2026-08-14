@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight, Calendar, MapPin, Users } from "lucide-react"
+import { ArrowRight, Calendar, ExternalLink, FileText, MapPin, Users } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Header } from "@/components/header"
@@ -15,13 +15,15 @@ export default function HomePage() {
       <section id="hero-section" className="hero-section relative bg-gradient-to-b from-muted/50 to-background py-24 px-4">
         <div className="mx-auto max-w-7xl text-center">
           <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-6xl mb-6">尾張東剣道連盟の紹介</h1>
-          <div className="mx-auto mb-6 flex justify-center max-w-2xl">
+          <div className="mx-auto mb-6 max-w-2xl">
+            {/* width / height は画像そのものの縦横比（569 x 389）に合わせる */}
             <Image
               src="/flag.png"
               alt="Owari East Kendo Federation Flag"
-              width={672}
-              height={672}
-              style={{ width: '100%', height: 'auto' }}
+              width={569}
+              height={389}
+              priority
+              className="h-auto w-full"
             />
           </div>
           <p className="mx-auto max-w-2xl text-lg leading-8 text-muted-foreground mb-8 text-left">
@@ -66,11 +68,32 @@ export default function HomePage() {
       {/* Examination Info Section */}
       <section id="examination-info-section" className="examination-info-section py-16 px-4">  
           <div className="mx-auto max-w-7xl text-center">
-          <h2 className="text-3xl font-bold text-foreground mb-4">昇段審査について</h2>
+          <h2 className="text-3xl font-bold text-foreground mb-4">昇段・昇級審査について</h2>
           <p className="text-lg text-muted-foreground mb-8">
-            昇段審査の詳細情報をここに記載します。  
+            昇段・昇級審査の詳細情報をここに記載します。
           </p>
-          
+
+
+          {/* 審査のお知らせ（PDF）のボタン。新しいPDFを追加するときは、
+              public/ にファイルを置いて、下の href とボタンの文字を書き換える */}
+          <div className="flex flex-wrap justify-center gap-4">
+            <Button
+              asChild
+              size="lg"
+              className="rounded-md bg-black text-white border-0 hover:bg-black hover:text-red-500 transition-colors duration-200"
+            >
+              <a
+                href="/r8summer-kyu-shinsa.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FileText />
+                令和8年度 夏季級位審査会（日進）のお知らせ
+                <ExternalLink />
+              </a>
+            </Button>
+          </div>
+
         {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             <a href="https://nissinkenyukai.wixsite.com/kendo" className="block p-6 rounded-lg border border-border hover:bg-muted/50 hover:border-primary transition-colors">
               <h3 className="font-semibold text-foreground text-lg">日進剣友会</h3>
