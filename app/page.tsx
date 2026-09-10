@@ -55,10 +55,10 @@ export default function HomePage() {
             ></iframe>
           </div>
           <ul className="mt-8 space-y-4">{/* ここにイベント名を入れる */}
-            <li className="text-muted-foreground">  6/28 三地区稽古会 /日進市スポーツセンター </li>
-            <li className="text-muted-foreground">  7/5 尾張東行動稽古会 / 日進市スポーツセンター </li>
-            <li className="text-muted-foreground">  7/19 尾張形講習審査会 / KTXアリーナ(江南) </li> 
-            <li className="text-muted-foreground">  7/26 椿会稽古会 / 日進市スポーツセンター </li> 
+            <li className="text-muted-foreground">  9/13 三地区稽古会 / 瀬戸武道館</li>
+            <li className="text-muted-foreground">  9/20 尾張東合同稽古会 / 日進市スポーツセンター </li>
+            <li className="text-muted-foreground">  9/23 尾張審判講習会 / 東郷町総合体育館武道場 </li> 
+            <li className="text-muted-foreground">  9/27 尾張13地区対抗剣道大会 / TKEスポーツセンター</li> 
             
                 
           </ul>
