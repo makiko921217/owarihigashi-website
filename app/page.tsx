@@ -83,12 +83,12 @@ export default function HomePage() {
               className="rounded-md bg-black text-white border-0 hover:bg-black hover:text-red-500 transition-colors duration-200"
             >
               <a
-                href="/r8summer-kyu-shinsa.pdf"
+                href="/R8autumn_danshisan.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <FileText />
-                令和8年度 夏季級位審査会（日進）のお知らせ
+                令和8年度 秋季初〜三段段位審査会のお知らせ
                 <ExternalLink />
               </a>
             </Button>
