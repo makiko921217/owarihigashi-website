@@ -83,7 +83,7 @@ export default function HomePage() {
               className="rounded-md bg-black text-white border-0 hover:bg-black hover:text-red-500 transition-colors duration-200"
             >
               <a
-                href="/R8autumn_danshisan.pdf"
+                href="/R8autumn_danshinsa.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
               >
