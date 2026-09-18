@@ -58,7 +58,7 @@ export default function HomePage() {
             <li className="text-muted-foreground">  9/13 三地区稽古会 / 瀬戸武道館</li>
             <li className="text-muted-foreground">  9/20 尾張東合同稽古会 / 日進市スポーツセンター </li>
             <li className="text-muted-foreground">  9/23 尾張審判講習会 / 東郷町総合体育館武道場 </li> 
-            <li className="text-muted-foreground">  9/27 尾張13地区対抗剣道大会 / TKEスポーツセンター</li> 
+            <li className="text-muted-foreground">  9/27 尾張13地区対抗剣道大会 / TKE十四山スポーツセンター </li> 
             
                 
           </ul>
