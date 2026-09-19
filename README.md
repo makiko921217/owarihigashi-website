@@ -1,11 +1,102 @@
-# 作業手順
-1. vscodeを立ち上げる　青△のロゴ
-2. 直したいところ（白い日本語文字のところ）を直す
-3. ctrl+Sでセーブする
-4. `npm run dev` をターミナルに入力
-5. localhost:3000をブラウザで見る（自分の確認用）
-6. PS C:hogehoge/owarihigashi-website>　の後に、`git add .`
-7. PS C:hogehoge/owarihigashi-website>  の後に　`git commit -m "直したところメモ"`
-8. PS C:hogehoge/owarihigashi-website>  の後に　`git push`  これで公開完了
-9. `https://owarihigashi-website-xi.vercel.app/`　を確認する
+# 尾張東剣道連盟ホームページ
 
+公開URL: https://owarihigashi-website-xi.vercel.app/
+
+---
+
+## ページを更新する手順（管理画面）
+
+パソコンでもスマホでも、ブラウザだけで更新できます。
+
+1. **管理画面の URL**（別途お伝えします）を開く
+2. パスワードを入れて「ログイン」を押す
+3. 直したいところを書き換える
+4. 一番下の **「公開する」** を押す
+5. 「公開しました」と出れば完了
+
+> **反映まで2〜3分かかります。** 「公開する」を押した直後にサイトを見ても
+> まだ変わっていません。少し待ってから読み込み直してください。
+
+### 更新できるもの
+
+| 場所 | 内容 |
+| --- | --- |
+| 直近の行事予定 | カレンダーの下に出る一覧。日付・行事名・場所を入れる。行の追加、↑↓での並べ替え、削除ができる |
+| 昇段・昇級審査のお知らせボタン | ボタンの文章と、開いたときに出るPDF。最大3つまで |
+
+### PDFの入れ替え方
+
+1. 「PDFを選ぶ」または「PDFを差し替える」を押す
+2. パソコンの中からPDFファイルを選ぶ
+3. ファイル名が表示されたら読み込み完了
+4. 最後に「公開する」を押す
+
+※ 「公開する」を押すまでは、サイトには反映されません。
+
+### 困ったとき
+
+- **「公開する」を押したのにサイトが変わらない** … 2〜3分待ってから読み込み直してください。
+- **パスワードを忘れた** … 管理者に連絡してください。新しいパスワードを発行できます。
+- **「ログインの失敗が続いたため…」と出る** … 15分待つともう一度試せます。
+- **画面の上に赤い帯が出ている** … サーバー側の設定が外れています。管理者に連絡してください。
+- **「ほかの場所で内容が更新されていたため…」と出る** … 管理者が同時に編集しています。
+  ページを読み込み直してからやり直してください。
+
+---
+
+## 開発者向け
+
+### ローカルで動かす
+
+```bash
+npm install
+npm run dev     # http://localhost:3000
+```
+
+管理画面 (`/admin`) をローカルで試すには `.env.local` が必要です。
+
+```bash
+npm run admin:password          # パスワードとハッシュを生成
+```
+
+```
+ADMIN_PASSWORD_HASH=scrypt:...
+SESSION_SECRET=...
+GITHUB_TOKEN=ghp_...                              # repo スコープの classic token
+GITHUB_REPO=makiko921217/owarihigashi-website
+GITHUB_BRANCH=main
+ADMIN_MODE=1
+```
+
+`.env.local` を作ったあとは dev サーバーを**再起動**してください（起動中の読み直しはされません）。
+
+> ローカルで「公開する」を押すと**本物のリポジトリにコミットが飛びます**。
+> 試すだけなら `GITHUB_BRANCH` を検証用ブランチに向けてください。
+
+### デプロイ先は2つ
+
+| | どこ | 何を出すか | 更新方法 |
+| --- | --- | --- | --- |
+| サイト本体 | お母様の Vercel | 公開ページ | `git push`（自動デプロイ） |
+| 管理画面 | あなたの Vercel | `/admin` のみ | `npx vercel deploy --prod` |
+
+同じコードベースを 2 か所に置き、`ADMIN_MODE` 環境変数で挙動を切り替えています。
+
+### 構成
+
+| ファイル | 役割 |
+| --- | --- |
+| `data/content.json` | 行事予定と審査ボタンの実データ。管理画面が書き換える |
+| `app/page.tsx` | トップページ。上記 JSON をビルド時に読む |
+| `app/admin/` | 管理画面（ログイン・編集・Server Actions） |
+| `lib/admin-auth.ts` | パスワード検証とセッション cookie |
+| `lib/github-content.ts` | GitHub API 経由の読み書き（コミット） |
+| `lib/site-content.ts` | サイト本体が読む内容 |
+| `lib/site-content-schema.ts` | 型・上限値（クライアントと共有） |
+| `proxy.ts` | `/admin` の入口ガードと `ADMIN_MODE` の切り替え |
+| `scripts/admin-password.mjs` | パスワードとハッシュの生成 |
+
+`app/page.tsx` の行事予定・審査ボタンを直接書き換えても意味がありません。
+`data/content.json` が正になります（手で編集するのは可）。
+
+セットアップ手順は [`docs/admin-setup.md`](docs/admin-setup.md) を参照してください。

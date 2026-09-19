@@ -1,0 +1,16 @@
+{
+  "events": [
+    { "id": "e1", "date": "9/13", "title": "三地区稽古会", "place": "瀬戸武道館" },
+    { "id": "e2", "date": "9/20", "title": "尾張東合同稽古会", "place": "日進市スポーツセンター" },
+    { "id": "e3", "date": "9/23", "title": "尾張審判講習会", "place": "東郷町総合体育館武道場" },
+    { "id": "e4", "date": "9/27", "title": "尾張13地区対抗剣道大会", "place": "TKE十四山スポーツセンター" }
+  ],
+  "examButtons": [
+    {
+      "id": "x1",
+      "label": "令和8年度 秋季初〜三段段位審査会のお知らせ",
+      "pdfUrl": "/R8autumn_danshinsa.pdf",
+      "pdfName": "R8autumn_danshinsa.pdf"
+    }
+  ]
+}

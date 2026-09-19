@@ -5,8 +5,11 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { siteContent } from "@/lib/site-content"
 
 export default function HomePage() {
+  const { events, examButtons } = siteContent
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -54,13 +57,14 @@ export default function HomePage() {
               scrolling="no"
             ></iframe>
           </div>
-          <ul className="mt-8 space-y-4">{/* ここにイベント名を入れる */}
-            <li className="text-muted-foreground">  9/13 三地区稽古会 / 瀬戸武道館</li>
-            <li className="text-muted-foreground">  9/20 尾張東合同稽古会 / 日進市スポーツセンター </li>
-            <li className="text-muted-foreground">  9/23 尾張審判講習会 / 東郷町総合体育館武道場 </li> 
-            <li className="text-muted-foreground">  9/27 尾張13地区対抗剣道大会 / TKE十四山スポーツセンター </li> 
-            
-                
+          {/* 内容は管理画面 (/admin) から編集する。ここを直接書き換えないこと。 */}
+          <ul className="mt-8 space-y-4">
+            {events.map((event) => (
+              <li key={event.id} className="text-muted-foreground">
+                {[event.date, event.title].filter(Boolean).join(" ")}
+                {event.place ? ` / ${event.place}` : ""}
+              </li>
+            ))}
           </ul>
         </div>
       </section>
@@ -74,24 +78,22 @@ export default function HomePage() {
           </p>
 
 
-          {/* 審査のお知らせ（PDF）のボタン。新しいPDFを追加するときは、
-              public/ にファイルを置いて、下の href とボタンの文字を書き換える */}
+          {/* 審査のお知らせ（PDF）のボタン。追加・差し替えは管理画面 (/admin) から行う。 */}
           <div className="flex flex-wrap justify-center gap-4">
-            <Button
-              asChild
-              size="lg"
-              className="rounded-md bg-black text-white border-0 hover:bg-black hover:text-red-500 transition-colors duration-200"
-            >
-              <a
-                href="/R8autumn_danshinsa.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
+            {examButtons.map((button) => (
+              <Button
+                key={button.id}
+                asChild
+                size="lg"
+                className="rounded-md bg-black text-white border-0 hover:bg-black hover:text-red-500 transition-colors duration-200"
               >
-                <FileText />
-                令和8年度 秋季初〜三段段位審査会のお知らせ
-                <ExternalLink />
-              </a>
-            </Button>
+                <a href={button.pdfUrl} target="_blank" rel="noopener noreferrer">
+                  <FileText />
+                  {button.label}
+                  <ExternalLink />
+                </a>
+              </Button>
+            ))}
           </div>
 
         {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
