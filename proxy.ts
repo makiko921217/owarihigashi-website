@@ -27,6 +27,11 @@ export function proxy(request: NextRequest) {
     return NextResponse.next()
   }
 
+  // 本番サイト側のデプロイには管理画面を出さない。
+  // 環境変数が無いのでログインは元々できないが、入れないフォームを
+  // 会員に見せても混乱するだけなので、そもそも存在しない扱いにする。
+  if (!ADMIN_MODE) return NextResponse.redirect(new URL('/', request.url))
+
   const loggedIn = verifySessionToken(request.cookies.get(SESSION_COOKIE)?.value)
 
   if (pathname === '/admin/login') {
