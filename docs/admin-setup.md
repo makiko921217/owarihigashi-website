@@ -139,17 +139,104 @@ npx vercel deploy --prod
 
 GitHub 連携していないので、`git push` では管理画面は更新されません。ここだけ注意。
 
-## パスワードを変えるとき
+## パスワードを変えるとき（緊急時の手順書）
+
+漏洩の疑い、退任、単純な変更、いずれもこの手順です。
+**パスワードを変えると、ログイン中のセッションはすべて即座に無効**になります
+（セッショントークンにパスワードの指紋を埋めてあるため、再デプロイを待たずに失効します）。
+
+### 前提
+
+| 項目 | 値 |
+| --- | --- |
+| Vercel プロジェクト | `owarihigashi-admin`（**あなたの**アカウント `shun020921-2138s-projects`） |
+| 管理画面 URL | https://owarihigashi-admin.vercel.app/admin |
+| 現行パスワードの控え | `~/owarihigashi-admin-password.txt` |
+
+`npx vercel whoami` が `shun020921-2138` を返すこと、
+`cat .vercel/project.json` の `projectName` が `owarihigashi-admin` であることを先に確認してください。
+違っていたら `npx vercel link --project owarihigashi-admin --yes` でリンクし直します。
+
+### 手順
+
+**① 新しいパスワードとハッシュを作る**（値を画面に出さずファイルへ）
 
 ```bash
-npm run admin:password
-npx vercel env rm  ADMIN_PASSWORD_HASH production
-npx vercel env add ADMIN_PASSWORD_HASH production
-npx vercel deploy --prod                              # 環境変数の反映には再デプロイが必要
+SCRATCH=$(mktemp -d)
+node -e '
+const { randomBytes, scryptSync } = require("node:crypto")
+const fs = require("node:fs")
+const W = "abcdefghijkmnpqrstuvwxyz23456789"
+const pw = Array.from(randomBytes(20), b => W[b % W.length]).join("").replace(/(.{4})(?=.)/g, "$1-")
+const salt = randomBytes(16)
+fs.writeFileSync(process.env.HOME + "/owarihigashi-admin-password.txt",
+  ["尾張東剣道連盟 ホームページ管理画面","",
+   "管理画面URL : https://owarihigashi-admin.vercel.app/admin",
+   "パスワード   : " + pw, "",
+   "このパスワードをお母様にお渡しください。",""].join("\n"), { mode: 0o600 })
+fs.writeFileSync(process.env.SCRATCH + "/hash.txt",
+  "scrypt:" + salt.toString("hex") + ":" + scryptSync(pw.normalize("NFKC"), salt, 64).toString("hex"),
+  { mode: 0o600 })
+console.log("生成しました")
+'
 ```
 
-パスワードを変えると、**ログイン中のセッションはすべて自動で無効**になります
-（セッショントークンにパスワードの指紋を埋めているため）。
+**② 環境変数を差し替える**
+
+```bash
+npx vercel env rm ADMIN_PASSWORD_HASH production --yes
+printf '%s' "$(cat $SCRATCH/hash.txt)" | npx vercel env add ADMIN_PASSWORD_HASH production --yes
+rm -rf "$SCRATCH"
+```
+
+**③ 再デプロイして反映**
+
+```bash
+npx vercel deploy --prod
+```
+
+**④ 確認**
+
+新しいパスワードでログインできること、古いパスワードでログインできないことを確認します。
+新しいパスワードは `~/owarihigashi-admin-password.txt` に上書きされています。
+
+### あわせて SESSION_SECRET も変える場合
+
+漏洩が疑われるときは、セッション署名鍵も変えてください。
+
+```bash
+SCRATCH=$(mktemp -d)
+node -e 'require("node:fs").writeFileSync(process.env.SCRATCH+"/s.txt", require("node:crypto").randomBytes(32).toString("hex"), {mode:0o600})'
+npx vercel env rm SESSION_SECRET production --yes
+printf '%s' "$(cat $SCRATCH/s.txt)" | npx vercel env add SESSION_SECRET production --yes
+rm -rf "$SCRATCH"
+npx vercel deploy --prod
+```
+
+### GitHub トークンも無効化する場合
+
+管理画面のトークンが漏れた疑いがあるときは、**先に GitHub 側で失効**させてください。
+
+1. https://github.com/settings/tokens で `owarihigashi-admin` を **Delete**
+2. 新しい classic token（scope は `repo` のみ）を発行
+3. コピーした状態で `pbpaste > ~/gh-token.txt`
+4. 差し替えて削除:
+
+```bash
+printf '%s' "$(cat ~/gh-token.txt | tr -d '\n\r ')" | npx vercel env add GITHUB_TOKEN production --force --yes
+rm -f ~/gh-token.txt
+npx vercel deploy --prod
+```
+
+トークンが漏れた場合、リポジトリに不正なコミットが入っていないかも確認してください。
+
+```bash
+git log --oneline -20 makiko921217/owarihigashi-website 2>/dev/null || gh api "repos/makiko921217/owarihigashi-website/commits?sha=main" --jq '.[0:20][] | .sha[0:7] + "  " + .commit.author.date + "  " + (.commit.message | split("\n")[0])'
+```
+
+身に覚えのないコミットがあれば `git revert` で戻せます。
+**サイト本体は別アカウント・別プロジェクトなので、管理画面側が侵害されても
+公開サイトの Vercel 設定やドメインには手が出せません**（できるのはリポジトリへのコミットまで）。
 
 ## GitHub トークンが期限切れになったら
 
